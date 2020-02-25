@@ -55,4 +55,22 @@ isThereSum(sumMe ,6);
 // Question 3: Write a function that converts HEX to RGB. Then Make that function auto-dect the formats so that if you enter HEX color format it returns RGB and if you enter RGB color format it returns HEX.
 function rgbToHex(color){
 
+  if (color.includes('rgb(')){
+    let rgbArr = color.match(/\d+/g);
+    console.log(rgbArr);
+
+    let HexString = '#';
+
+    rgbArr.forEach(value => {
+      hexValue =  parseInt(value).toString(16);
+      HexString += hexValue;
+    });
+
+    return HexString;
+  } else if (color.includes('#')){
+    console.log('still in progress!');
+  };
 }
+
+
+rgbToHex('rgb(223,124,118)')
