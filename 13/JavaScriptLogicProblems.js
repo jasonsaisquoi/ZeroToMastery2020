@@ -36,12 +36,21 @@ sortArray(sortMe);
 //should return: [[1,1,1,1],[2,2,2], 4,5,10,[20,20], 391, 392,591
 
 // Question 2: Write a javascript function that takes an array of numbers and a target number. The function should find two different numbers in the array that, when added together, give the target number. For example: answer([1,2,3], 4)should return [1,3]
-
-const sumMe = [1,2,3];
-function isThereSum(array){
-
+const sumMe = [1,6,7,54,2,8,2,4];
+function isThereSum(array, sumTo){
+  let setArray = Array.from(new Set(array));
+  let addNums = [];
+  for (let i=0; i < setArray.length - 1 ;i++){
+    for (let j = 1;  j < setArray.length; j++){
+      if (setArray[i] + setArray[j] === sumTo && setArray[i] !== setArray[j]) {
+        addNums.push(setArray[i],setArray[j]);
+      }
+    }
+  }
+  return addNums;
 };
-isThereSum(sumMe ,4);
+isThereSum(sumMe ,6);
+//returns [2,4]
 
 // Question 3: Write a function that converts HEX to RGB. Then Make that function auto-dect the formats so that if you enter HEX color format it returns RGB and if you enter RGB color format it returns HEX.
 function rgbToHex(color){
