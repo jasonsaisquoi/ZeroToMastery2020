@@ -56,8 +56,8 @@ isThereSum(sumMe ,6);
 function rgbToHex(color){
 
   if (color.includes('rgb(')){
+    // /\d+/g regex for finding non digit characters
     let rgbArr = color.match(/\d+/g);
-    console.log(rgbArr);
 
     let HexString = '#';
 
@@ -66,11 +66,28 @@ function rgbToHex(color){
       HexString += hexValue;
     });
 
-    return HexString;
+    return console.log(HexString);
   } else if (color.includes('#')){
-    console.log('still in progress!');
+    //parse string 
+    let hexCode = color.slice(1).split('');
+    let decString = 'rgb(';
+
+    const hexParse = (hex) => (parseInt(hex, 16));
+    
+    //conversion to decimal
+    hexArray = [];
+
+    //push rgb values into hexArray
+    for (let i=0; i <= hexCode.length - 2; i+=2) {
+      hexArray.push(hexParse(hexCode.slice(i,i+2)));
+    }
+
+    decString += hexArray.toString() + ")";
+    //turn hexArray into rgb values
+    console.log(decString);
   };
 }
 
 
-rgbToHex('rgb(223,124,118)')
+rgbToHex('rgb(223,124,118)');
+rgbToHex('#ddf232');
